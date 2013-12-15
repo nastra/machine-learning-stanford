@@ -35,7 +35,17 @@ grad = zeros(size(theta));
 %           temp(1) = 0;   % because we don't add anything for j = 0  
 %           grad = grad + YOUR_CODE_HERE (using the temp variable)
 %
+prediction = sigmoid(X * theta);
 
+% regularize theta by removing first value
+theta_reg = [0;theta(2:end, :);];
+
+result = y' * log(prediction) + (1 - y') * log(1 - prediction);
+J = -1 ./ m * result;
+regularized = lambda / (2 * m) * theta_reg'*theta;
+J = J + regularized;
+
+grad = 1 ./ m * X' * (prediction - y) + (lambda/m * theta_reg);
 
 
 
