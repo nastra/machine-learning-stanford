@@ -13,13 +13,7 @@ sim = 0;
 % Instructions: Fill in this function to return the similarity between x1
 %               and x2 computed using a Gaussian kernel with bandwidth
 %               sigma
-%
-%
-
-
-
-
-
+sim = exp(-(sum((x1 - x2).^2) / (2 * sigma^2)));
 
 % =============================================================
     
