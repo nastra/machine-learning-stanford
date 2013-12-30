@@ -21,13 +21,20 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+m = length(X);
 
-
-
-
-
-
-% =============================================================
+	for i=1:m
+		shortestDistance = Inf;
+		for j=1:K
+			x = X(i, :);
+			centroid = centroids(j, :);
+			distance = 1 / m * sum((x - centroid).^2);
+			if distance < shortestDistance
+				shortestDistance = distance;
+				idx(i) = j;
+			end
+		end
+	end
 
 end
 
